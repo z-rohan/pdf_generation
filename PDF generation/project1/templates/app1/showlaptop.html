@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Show Laptop</title>
+{% endblock %}
+
+{% block content %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">LAPTOP ID</th>
+        <th scope="col">NAME</th>
+        <th scope="col">BRAND</th>
+        <th scope="col">RAM</th>
+        <th scope="col">ROM</th>
+        <th scope="col">HDD</th>
+        <th scope="col">SSD</th>
+        <th scope="col">PRICE</th>
+        <th scope="col">REPORT</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for i in obj %}
+      <tr>
+        <th>{{i.lid}}</th>
+        <td>{{i.name}}</td>
+        <td>{{i.brand}}</td>
+        <td>{{i.ram}}</td>
+        <th>{{i.rom}}</th>
+        <td>{{i.hdd}}</td>
+        <td>{{i.ssd}}</td>
+        <td>{{i.price}}</td>
+        <td><a href="{% url 'pdf_url' i.id %}"><button class="btn btn-primary">Print Report</button></a></td>
+      </tr>
+        {% endfor %}
+    
+    </tbody>
+  </table>
+
+  <a href="{% url 'allpdf_url' %}"><button class="btn btn-warning">PRINT ALL</button></a>
+
+{% endblock %}
